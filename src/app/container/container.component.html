@@ -1,0 +1,21 @@
+<div>
+  <h1 *ngIf="displayTodoList">{{addComEventMsg}}</h1>
+  <h1 *ngIf="displayButton"></h1>
+  
+  <span>
+    <button *ngIf="displayTodoList" type="button" class="btn btn-success" (click)="onAddClick()">Add Todo</button>
+
+    <button *ngIf="displayButton" type="button" class="btn btn-danger" (click)="onRemoveAll()">Remove All</button>
+    <!-- TODO: Create Search Comp -->
+    <hr>
+  </span>
+  <sb-todo-list *ngIf="displayTodoList" [inTodos]="todos" (removeClkEvent)="handleRemoveTodo($event)" (copyClkEvent)="handleCopyTodo($event)">
+
+  </sb-todo-list>
+  
+  <sb-add-to-do *ngIf="!displayTodoList" (saveTodoEvt)="handleSaveTodo($event)"
+    (cancelTodoEvt)="handleCancelTodo($event)">
+    <button *ngIf="!displayButton" type="button" class="btn btn-danger" (click)="onRemoveAll()">Remove All</button>
+    
+  </sb-add-to-do>
+</div>

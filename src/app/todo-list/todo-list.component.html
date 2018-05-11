@@ -1,0 +1,34 @@
+<div class="jumbotron">
+    <table class="table">
+      <thead class="thead-dark">
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">STATUS</th>
+        <th scope="col">PRIORITY</th>
+        <th scope="col">ACTIONS</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of inTodos">
+          <th scope="row">{{todo.id}}</th>
+          <td><input type="text" value={{todo.name}}></td>
+          <td>
+            <select>
+              <option value={{todo.status}} selected>{{todo.status}}</option>
+              <option value=""></option>
+            </select>
+          </td>
+          <td>
+              <select>
+                  <option value={{todo.priority}} selected>{{todo.priority}}</option>
+                  <option value=""></option>
+              </select>
+          </td>
+          <td><span>
+            <button type="button" class="btn btn-sm btn-warning" (click)="onRemoveTodo(todo.id)">Remove</button>
+            <button type="button" class="btn btn-sm btn-primary">Update</button>
+            <button type="button" class="btn btn-sm btn-info" (click)="onCopyTodo(todo)">Copy</button>
+          </span></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
